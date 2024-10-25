@@ -1,0 +1,12 @@
+0000000000000000000000000000000000000000 7edd4133aecb7126a3e6bb3d94232e2c41c2ea44 VladUbuntu <stukalin.vlad@gmail.com> 1729801448 +0000	clone: from https://github.com/GachiKesha/kpi_vladik_L2
+7edd4133aecb7126a3e6bb3d94232e2c41c2ea44 7edd4133aecb7126a3e6bb3d94232e2c41c2ea44 VladUbuntu <stukalin.vlad@gmail.com> 1729896862 +0000	checkout: moving from master to branchA
+7edd4133aecb7126a3e6bb3d94232e2c41c2ea44 15dfe006fc053fa9b1a2aa84745c241177b75071 VladUbuntu <stukalin.vlad@gmail.com> 1729896934 +0000	commit: C1
+15dfe006fc053fa9b1a2aa84745c241177b75071 15dfe006fc053fa9b1a2aa84745c241177b75071 VladUbuntu <stukalin.vlad@gmail.com> 1729897496 +0000	checkout: moving from branchA to hotfix
+15dfe006fc053fa9b1a2aa84745c241177b75071 36168c4323bbbead4efbc9aac4b88377d59f26d0 VladUbuntu <stukalin.vlad@gmail.com> 1729897713 +0000	commit: C2
+36168c4323bbbead4efbc9aac4b88377d59f26d0 7edd4133aecb7126a3e6bb3d94232e2c41c2ea44 VladUbuntu <stukalin.vlad@gmail.com> 1729897796 +0000	checkout: moving from hotfix to master
+7edd4133aecb7126a3e6bb3d94232e2c41c2ea44 36168c4323bbbead4efbc9aac4b88377d59f26d0 VladUbuntu <stukalin.vlad@gmail.com> 1729897813 +0000	merge hotfix: Fast-forward
+36168c4323bbbead4efbc9aac4b88377d59f26d0 15dfe006fc053fa9b1a2aa84745c241177b75071 VladUbuntu <stukalin.vlad@gmail.com> 1729898040 +0000	checkout: moving from master to branchA
+15dfe006fc053fa9b1a2aa84745c241177b75071 8a8dd0fb4e0895551083f6f781b5c5869d471fd3 VladUbuntu <stukalin.vlad@gmail.com> 1729898964 +0000	commit: C3
+8a8dd0fb4e0895551083f6f781b5c5869d471fd3 36168c4323bbbead4efbc9aac4b88377d59f26d0 VladUbuntu <stukalin.vlad@gmail.com> 1729899062 +0000	checkout: moving from branchA to master
+36168c4323bbbead4efbc9aac4b88377d59f26d0 36168c4323bbbead4efbc9aac4b88377d59f26d0 VladUbuntu <stukalin.vlad@gmail.com> 1729899096 +0000	checkout: moving from master to origin/master
+36168c4323bbbead4efbc9aac4b88377d59f26d0 fedfa0785a6166a5162dcf03abe09b20258e7e83 VladUbuntu <stukalin.vlad@gmail.com> 1729899661 +0000	commit (merge): C4 final merge
