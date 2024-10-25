@@ -9,13 +9,13 @@
 
 class Lab2 {
 public: 
-    double FuncA(int n) {
+    double FuncA() {
         double x;
 
         std::cout << "Enter the value of x (in radians): ";
         std::cin >> x;
         
-        return taylorTan(x, n);
+        return taylorTan(x, 3);
     };
 
 private:        
