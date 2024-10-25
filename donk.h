@@ -12,6 +12,7 @@ class Lab2 {
  * Class representing mathematical operations.
  */
 public: 
+
     /**
       * Returns value of Taylor series approximation for tan(x).
       * 
