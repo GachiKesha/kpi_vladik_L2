@@ -12,6 +12,7 @@ class Lab2 {
  * Class representing mathematical operations.
  */
 public: 
+
     /**
       * Returns value of Taylor series approximation for tan(x).
       * 
@@ -19,7 +20,7 @@ public:
       * @param n The number of terms to include in the Taylor series approximation.
       * @return taylorTan(x, n).
       */
-    double FuncA(int x, n) {      
+    double FuncA(int x, int n) {      
         return taylorTan(x, n);
     };
 
@@ -121,7 +122,7 @@ private:
       * @param n The number for which to compute the factorial.
       * @return The factorial of n (n!).
       */
-    double getFactorial(int n) {
+    double getFactorial(unsigned int n) {
         while (n >= factorialCache.size()) {
             int nextIndex = factorialCache.size();
             factorialCache.push_back(factorialCache[nextIndex - 1] * nextIndex);
