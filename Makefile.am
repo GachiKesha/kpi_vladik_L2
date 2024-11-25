@@ -15,7 +15,7 @@ CTRLF_NAME=$(CTRLF_DIR)/control
 debug:
 	$(foreach v, $(.VARIABLES), $(info $(v)=$($(v))))
 
-deb: pkg_descr
+deb:
 	mkdir -p $(CTRLF_DIR)
 	echo Package: $(PACKAGE) > $(CTRLF_NAME)
 	echo Version: $(VERSION) >> $(CTRLF_NAME)
