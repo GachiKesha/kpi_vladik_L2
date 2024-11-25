@@ -1,0 +1,26 @@
+name: tarball building
+
+on:
+  push:
+    branches: [ "branchAutomake", "branchMake" ]
+  pull_request:
+    branches: [ "branchAutomake", "branchMake" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: configure
+      run: ./configure
+    - name: make
+      run: make
+    - name: Install to deb folder
+      run: make deb
+    - name: Prepare package
+      run: dpkg-deb --build deb
+    - name: Run distcheck
+      run: make distcheck
+
