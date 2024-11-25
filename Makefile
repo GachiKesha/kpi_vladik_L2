@@ -767,14 +767,13 @@ uninstall-hook:
 debug:
 	$(foreach v, $(.VARIABLES), $(info $(v)=$($(v))))
 
-deb:
+deb: pkg_descr
 	mkdir -p $(CTRLF_DIR)
 	echo Package: $(PACKAGE) > $(CTRLF_NAME)
 	echo Version: $(VERSION) >> $(CTRLF_NAME)
 	echo Architecture: all >> $(CTRLF_NAME)
 	echo Maintainer: $(PACKAGE_BUGREPORT) >> $(CTRLF_NAME)
 	echo -n "Description: " >> $(CTRLF_NAME)
-	cat pkg_descr >> $(CTRLF_NAME)
 	make DESTDIR=$(CURDIR)/deb install
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

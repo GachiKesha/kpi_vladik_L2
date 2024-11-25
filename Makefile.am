@@ -15,13 +15,12 @@ CTRLF_NAME=$(CTRLF_DIR)/control
 debug:
 	$(foreach v, $(.VARIABLES), $(info $(v)=$($(v))))
 
-deb:
+deb: pkg_descr
 	mkdir -p $(CTRLF_DIR)
 	echo Package: $(PACKAGE) > $(CTRLF_NAME)
 	echo Version: $(VERSION) >> $(CTRLF_NAME)
 	echo Architecture: all >> $(CTRLF_NAME)
 	echo Maintainer: $(PACKAGE_BUGREPORT) >> $(CTRLF_NAME)
 	echo -n "Description: " >> $(CTRLF_NAME)
-	cat pkg_descr >> $(CTRLF_NAME)
 	make DESTDIR=$(CURDIR)/deb install
 
