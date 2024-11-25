@@ -202,7 +202,7 @@ CPPFLAGS =
 CSCOPE = cscope
 CTAGS = ctags
 CXX = g++
-CXXDEPMODE = depmode=gcc3
+CXXDEPMODE = depmode=none
 CXXFLAGS = -g -Wall 
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"donk\" -DPACKAGE_TARNAME=\"donk\" -DPACKAGE_VERSION=\"1.0\" -DPACKAGE_STRING=\"donk\ 1.0\" -DPACKAGE_BUGREPORT=\"a@gmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"donk\" -DVERSION=\"1.0\"
@@ -374,7 +374,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/main.Po # am--include-marker
+#include ./$(DEPDIR)/main.Po # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -383,18 +383,18 @@ $(am__depfiles_remade):
 am--depfiles: $(am__depfiles_remade)
 
 .cpp.o:
-	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
-#	$(AM_V_CXX)source='$<' object='$@' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ $<
+#	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
+#	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+#	$(AM_V_CXX)source='$<' object='$@' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) 
+	$(AM_V_CXX)$(CXXCOMPILE) -c -o $@ $<
 
 .cpp.obj:
-	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
-#	$(AM_V_CXX)source='$<' object='$@' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+#	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
+#	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+#	$(AM_V_CXX)source='$<' object='$@' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) 
+	$(AM_V_CXX)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -768,7 +768,7 @@ debug:
 	$(foreach v, $(.VARIABLES), $(info $(v)=$($(v))))
 
 deb:
-	mkdir -p $(CTRL_DIR)
+	mkdir -p $(CTRLF_DIR)
 	echo Package: $(PACKAGE) > $(CTRLF_NAME)
 	echo Version: $(VERSION) >> $(CTRLF_NAME)
 	echo Architecture: all >> $(CTRLF_NAME)

@@ -23,5 +23,5 @@ deb:
 	echo Maintainer: $(PACKAGE_BUGREPORT) >> $(CTRLF_NAME)
 	echo -n "Description: " >> $(CTRLF_NAME)
 	cat pkg_descr >> $(CTRLF_NAME)
-	ake DESTDIR=$(CURDIR)/deb install
+	make DESTDIR=$(CURDIR)/deb install
 
