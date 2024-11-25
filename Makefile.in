@@ -773,7 +773,7 @@ deb:
 	echo Version: $(VERSION) >> $(CTRLF_NAME)
 	echo Architecture: all >> $(CTRLF_NAME)
 	echo Maintainer: $(PACKAGE_BUGREPORT) >> $(CTRLF_NAME)
-	echo -n "Description: " >> $(CTRLF_NAME)
+	echo Description: "Descr." >> $(CTRLF_NAME)
 	make DESTDIR=$(CURDIR)/deb install
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
