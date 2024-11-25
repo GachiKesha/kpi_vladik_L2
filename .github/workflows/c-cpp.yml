@@ -17,3 +17,9 @@ jobs:
       run: ./configure
     - name: make
       run: make
+    - name: Install to deb folder
+      run: make deb
+    - name: Prepare package
+      run: dpkg-deb --build deb
+    - name: Run distcheck
+      run: make distcheck
