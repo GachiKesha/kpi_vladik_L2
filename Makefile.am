@@ -5,7 +5,7 @@ dist_man_MANS = donk.1
 CXXFLAGS = -g -Wall 
 CLEANFILES = *.o *.gch
 
-SUBDIR = tests
+SUBDIRS = tests
 
 CTRLF_DIR=$(CURDIR)/deb/DEBIAN
 CTRLF_NAME=$(CTRLF_DIR)/control
