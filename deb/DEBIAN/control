@@ -1,0 +1,5 @@
+Package: donk
+Version: 1.0
+Architecture: all
+Maintainer: a@gmail.com
+Description:The software to output tangent function using aproximation
