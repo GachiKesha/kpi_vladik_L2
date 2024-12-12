@@ -18,4 +18,4 @@ jobs:
     - name: make
       run: make
     - name: tarball
-      run: make dist
+      run: make distcheck
