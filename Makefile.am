@@ -5,9 +5,6 @@ dist_man_MANS = donk.1
 CXXFLAGS = -g -Wall 
 CLEANFILES = *.o *.gch
 
-uninstall-hook:
-	rm -d $(datarootdir)/$(PACKAGE)
-
 CTRLF_DIR=$(CURDIR)/deb/DEBIAN
 CTRLF_NAME=$(CTRLF_DIR)/control
 
