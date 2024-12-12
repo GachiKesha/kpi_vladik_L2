@@ -282,8 +282,6 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = foreign
 donk_SOURCES = main.cpp donk.h
 CLEANFILES = *.o *.gch
-CTRLF_DIR = $(CURDIR)/deb/DEBIAN
-CTRLF_NAME = $(CTRLF_DIR)/control
 all: all-am
 
 .SUFFIXES:
@@ -735,9 +733,8 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-binPROGRAMS
-	@$(NORMAL_INSTALL)
-	$(MAKE) $(AM_MAKEFLAGS) uninstall-hook
-.MAKE: install-am install-strip uninstall-am
+
+.MAKE: install-am install-strip
 
 .PHONY: CTAGS GTAGS TAGS all all-am am--depfiles am--refresh check \
 	check-am clean clean-binPROGRAMS clean-cscope clean-generic \
@@ -754,27 +751,10 @@ uninstall-am: uninstall-binPROGRAMS
 	installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic pdf pdf-am ps ps-am tags tags-am uninstall \
-	uninstall-am uninstall-binPROGRAMS uninstall-hook
+	uninstall-am uninstall-binPROGRAMS
 
 .PRECIOUS: Makefile
 
-
-uninstall-hook:
-	rm -d $(datarootdir)/$(PACKAGE)/data
-	rm -d $(datarootdir)/$(PACKAGE)
-
-.PHONY: deb debug
-debug:
-	$(foreach v, $(.VARIABLES), $(info $(v)=$($(v))))
-
-deb:
-	mkdir -p $(CTRLF_DIR)
-	echo Package: $(PACKAGE) > $(CTRLF_NAME)
-	echo Version: $(VERSION) >> $(CTRLF_NAME)
-	echo Architecture: all >> $(CTRLF_NAME)
-	echo Maintainer: $(PACKAGE_BUGREPORT) >> $(CTRLF_NAME)
-	echo Description: "Descr." >> $(CTRLF_NAME)
-	make DESTDIR=$(CURDIR)/deb install
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
