@@ -85,8 +85,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-check_PROGRAMS = donktest1$(EXEEXT)
-TESTS = donktest1$(EXEEXT)
+check_PROGRAMS = donktest1$(EXEEXT) donktest2$(EXEEXT)
+TESTS = donktest1$(EXEEXT) donktest2$(EXEEXT)
 subdir = tests
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -99,6 +99,9 @@ CONFIG_CLEAN_VPATH_FILES =
 am_donktest1_OBJECTS = main.$(OBJEXT)
 donktest1_OBJECTS = $(am_donktest1_OBJECTS)
 donktest1_LDADD = $(LDADD)
+am_donktest2_OBJECTS = servertest.$(OBJEXT)
+donktest2_OBJECTS = $(am_donktest2_OBJECTS)
+donktest2_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -114,7 +117,7 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/main.Po
+am__depfiles_remade = ./$(DEPDIR)/main.Po ./$(DEPDIR)/servertest.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -141,8 +144,8 @@ AM_V_CCLD = $(am__v_CCLD_$(V))
 am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(donktest1_SOURCES)
-DIST_SOURCES = $(donktest1_SOURCES)
+SOURCES = $(donktest1_SOURCES) $(donktest2_SOURCES)
+DIST_SOURCES = $(donktest1_SOURCES) $(donktest2_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -373,12 +376,12 @@ TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp \
 	$(top_srcdir)/test-driver
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} '/home/vlad/kpi_vladik_L2/missing' aclocal-1.16
+ACLOCAL = ${SHELL} '/home/vlad/Desktop/kpi_vladik_L2/missing' aclocal-1.16
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} '/home/vlad/kpi_vladik_L2/missing' autoconf
-AUTOHEADER = ${SHELL} '/home/vlad/kpi_vladik_L2/missing' autoheader
-AUTOMAKE = ${SHELL} '/home/vlad/kpi_vladik_L2/missing' automake-1.16
+AUTOCONF = ${SHELL} '/home/vlad/Desktop/kpi_vladik_L2/missing' autoconf
+AUTOHEADER = ${SHELL} '/home/vlad/Desktop/kpi_vladik_L2/missing' autoheader
+AUTOMAKE = ${SHELL} '/home/vlad/Desktop/kpi_vladik_L2/missing' automake-1.16
 AWK = mawk
 CPPFLAGS = 
 CSCOPE = cscope
@@ -403,7 +406,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} '/home/vlad/kpi_vladik_L2/missing' makeinfo
+MAKEINFO = ${SHELL} '/home/vlad/Desktop/kpi_vladik_L2/missing' makeinfo
 MKDIR_P = /usr/bin/mkdir -p
 OBJEXT = o
 PACKAGE = donk
@@ -418,10 +421,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 1.0
-abs_builddir = /home/vlad/kpi_vladik_L2/tests
-abs_srcdir = /home/vlad/kpi_vladik_L2/tests
-abs_top_builddir = /home/vlad/kpi_vladik_L2
-abs_top_srcdir = /home/vlad/kpi_vladik_L2
+abs_builddir = /home/vlad/Desktop/kpi_vladik_L2/tests
+abs_srcdir = /home/vlad/Desktop/kpi_vladik_L2/tests
+abs_top_builddir = /home/vlad/Desktop/kpi_vladik_L2
+abs_top_srcdir = /home/vlad/Desktop/kpi_vladik_L2
 ac_ct_CXX = g++
 am__include = include
 am__leading_dot = .
@@ -440,7 +443,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/vlad/kpi_vladik_L2/install-sh
+install_sh = ${SHELL} /home/vlad/Desktop/kpi_vladik_L2/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -463,6 +466,7 @@ top_builddir = ..
 top_srcdir = ..
 AUTOMAKE_OPTIONS = foreign
 donktest1_SOURCES = main.cpp $(top_builddir)/donk.h
+donktest2_SOURCES = servertest.cpp
 all: all-am
 
 .SUFFIXES:
@@ -504,6 +508,10 @@ donktest1$(EXEEXT): $(donktest1_OBJECTS) $(donktest1_DEPENDENCIES) $(EXTRA_donkt
 	@rm -f donktest1$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(donktest1_OBJECTS) $(donktest1_LDADD) $(LIBS)
 
+donktest2$(EXEEXT): $(donktest2_OBJECTS) $(donktest2_DEPENDENCIES) $(EXTRA_donktest2_DEPENDENCIES) 
+	@rm -f donktest2$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(donktest2_OBJECTS) $(donktest2_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -511,6 +519,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/main.Po # am--include-marker
+include ./$(DEPDIR)/servertest.Po # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -734,6 +743,13 @@ donktest1.log: donktest1$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+donktest2.log: donktest2$(EXEEXT)
+	@p='donktest2$(EXEEXT)'; \
+	b='donktest2'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 .test.log:
 	@p='$<'; \
 	$(am__set_b); \
@@ -826,6 +842,7 @@ clean-am: clean-checkPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 		-rm -f ./$(DEPDIR)/main.Po
+	-rm -f ./$(DEPDIR)/servertest.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -872,6 +889,7 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 		-rm -f ./$(DEPDIR)/main.Po
+	-rm -f ./$(DEPDIR)/servertest.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

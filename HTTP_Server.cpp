@@ -144,7 +144,7 @@ int CreateHTTPserver()
 			std::uniform_int_distribution<int> terms {10, 1000};
 			
 			Lab2 lab;			
-			for (int i=0; i<100000; i++) {
+			for (int i=0; i<200000; i++) {
 				aValues.push_back(lab.FuncA(distr(mtre), terms(mtre)));
 			}			
 			for (int i=0; i<100; i++)
