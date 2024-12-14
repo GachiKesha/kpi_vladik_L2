@@ -20,7 +20,7 @@ public:
       * @param n The number of terms to include in the Taylor series approximation.
       * @return taylorTan(x, n).
       */
-    double FuncA(int x, int n) {      
+    double FuncA(double x, int n) {      
         return taylorTan(x, n);
     };
 
@@ -38,10 +38,11 @@ private:
       * @return The approximate value of tan(x) computed using the specified number of terms.
       */
     double taylorTan(double x, int terms) {
-        x = std::fmod(x, M_PI);
-        if (x > M_PI / 2) x -= M_PI;
-        else if (x < -M_PI / 2) x += M_PI;
-
+	while ((x > M_PI / 2) || (x < -M_PI / 2)) {    
+        	if (x > M_PI / 2) x -= M_PI;
+        	else if (x < -M_PI / 2) x += M_PI;
+	}
+	
         double sum = 0.0;
 
         for (int n = 0; n < terms; n++) {            

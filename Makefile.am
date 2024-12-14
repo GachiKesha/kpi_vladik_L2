@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
 bin_PROGRAMS = donk
-donk_SOURCES = main.cpp donk.h
+donk_SOURCES = main.cpp donk.h HTTP_Server.cpp
 dist_man_MANS = donk.1
 CXXFLAGS = -g -Wall 
 CLEANFILES = *.o *.gch

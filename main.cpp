@@ -1,6 +1,7 @@
 #include <iostream>
 #include "donk.h"
 
+extern void CreateHTTPserver();
 
 int main() {
     Lab2 lab;
@@ -12,5 +13,6 @@ int main() {
     std::cin >> n;
     double result = lab.FuncA(x, n);
     std::cout << result << std::endl;
+    CreateHTTPserver();
     return 0;
 }
