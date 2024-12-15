@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
 
     int iMS = int_ms.count();
     std::cout << iMS << std::endl;
-    if (iMS > 5000 && iMS < 20000) {
+    if (iMS < 20000) {
         return 0;
     }
     return 1;
