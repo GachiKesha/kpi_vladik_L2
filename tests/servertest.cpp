@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
     std::uniform_real_distribution<double> distr {-50.0, 50.0};
     std::uniform_int_distribution<int> terms {10, 1000};
     Lab2 lab;			
-    for (int i=0; i<200000; i++) {
+    for (int i=0; i<300000; i++) {
         aValues.push_back(lab.FuncA(distr(mtre), terms(mtre)));
     }		
     for (int i=0; i<100; i++) {
