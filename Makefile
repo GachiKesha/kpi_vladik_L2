@@ -104,6 +104,8 @@ PROGRAMS = $(bin_PROGRAMS)
 am_donk_OBJECTS = main.$(OBJEXT) HTTP_Server.$(OBJEXT)
 donk_OBJECTS = $(am_donk_OBJECTS)
 donk_LDADD = $(LDADD)
+donk_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(donk_LDFLAGS) \
+	$(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -353,6 +355,7 @@ top_builddir = .
 top_srcdir = .
 AUTOMAKE_OPTIONS = foreign
 donk_SOURCES = main.cpp donk.h HTTP_Server.cpp
+donk_LDFLAGS = -static
 dist_man_MANS = donk.1
 CLEANFILES = *.o *.gch
 SUBDIRS = tests
@@ -440,7 +443,7 @@ clean-binPROGRAMS:
 
 donk$(EXEEXT): $(donk_OBJECTS) $(donk_DEPENDENCIES) $(EXTRA_donk_DEPENDENCIES) 
 	@rm -f donk$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(donk_OBJECTS) $(donk_LDADD) $(LIBS)
+	$(AM_V_CXXLD)$(donk_LINK) $(donk_OBJECTS) $(donk_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)

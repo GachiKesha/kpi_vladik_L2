@@ -27,8 +27,14 @@ jobs:
       run: cd ./tests/ && make check
     - name: Login into docker
       run: docker login -u ${{vars.DOCKER_USERNAME}} -p ${{secrets.DOCKERHUB_TOKEN}}
-    - name: Build image
+    - name: Build image amd64
       run: docker build --platform=linux/amd64 -t vladikstuk/vladikdonk:amd64 --push .
-    - name: Build for arm
+    - name: Install QEMU
+      uses: docker/setup-qemu-action@v3
+    - name: Install docker buildx
+      uses: docker/setup-buildx-action@v1
+    - name: Build image arm64
       run: docker build --platform=linux/arm64 -t vladikstuk/vladikdonk:arm64 --push .
+      
+
 
