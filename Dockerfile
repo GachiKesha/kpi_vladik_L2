@@ -1,7 +1,8 @@
 FROM alpine AS build
 RUN apk add --no-cache build-base automake autoconf
 WORKDIR /home/vlad/kpi_vladik_donk
-COPY . . 
+COPY . .
+RUN autoreconf -fi 
 RUN ./configure
 RUN make
 
