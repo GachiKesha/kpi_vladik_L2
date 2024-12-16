@@ -29,4 +29,6 @@ jobs:
       run: docker login -u ${{vars.DOCKER_USERNAME}} -p ${{secrets.DOCKERHUB_TOKEN}}
     - name: Build image
       run: docker build --platform=linux/amd64 -t vladikstuk/vladikdonk:amd64 --push .
+    - name: Build for arm
+      run: docker build --platform=linux/arm64 -t vladikstuk/vladikdonk:arm64 --push .
 
