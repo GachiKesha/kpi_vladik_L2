@@ -1,7 +1,7 @@
 FROM alpine AS build
 RUN apk add --no-cache build-base automake autoconf
 WORKDIR /home/vlad/kpi_vladik_donk
-COPY . .
+RUN git clone --branch branchHTTPservMulti https://github.com/GachiKesha/kpi_vladik_L2.git .
 RUN autoreconf -fi 
 RUN ./configure
 RUN make
