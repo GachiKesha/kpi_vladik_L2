@@ -35,6 +35,9 @@ jobs:
       uses: docker/setup-buildx-action@v1
     - name: Build image arm64
       run: docker build --platform=linux/arm64 -t vladikstuk/vladikdonk:arm64 --push .
-      
+    - name: create manifest
+      run: docker manifest create vladikstuk/vladikdonk --amend vladikstuk/vladikdonk:amd64 --amend vladikstuk/vladikdonk:arm64
+    - name: Push manifest to docker hub
+      run: docker manifest push vladikstuk/vladikdonk
 
 
