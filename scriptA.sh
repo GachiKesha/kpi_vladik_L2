@@ -1,21 +1,58 @@
 #!/bin/bash
 
-# Ensure srv1 is running on core 0 at the start
-if ! docker ps --format '{{.Names}}' | grep -wq srv1; then
-    echo "Starting srv1 on core 0..."
+update() {
+echo "Checking newer image on the server"
+pullResult=$(docker pull vladikstuk/vladikdonk | grep "Downloaded newer image")
+if [ -n "$pullResult" ]; then
+    echo $pullResult
+    echo "Newer image downloaded"
+    if docker ps --format '{{.Names}}' | grep -wq srv1; then
+        echo "Restarting srv1"
+    	docker kill --signal=SIGINT srv1
+    	docker wait srv1
+    else
+    	echo "Starting srv1 on core 0..."
+    fi
     docker run --name srv1 --rm -d --cpuset-cpus=0 vladikstuk/vladikdonk
+    if docker ps --format '{{.Names}}' | grep -wq srv2; then
+        echo "Restarting srv2"
+    	docker kill --signal=SIGINT srv2
+    	docker wait srv1
+    	docker run --name srv2 --rm -d --cpuset-cpus=1 vladikstuk/vladikdonk
+    fi
+    
+    if docker ps --format '{{.Names}}' | grep -wq srv3; then
+        echo "Restarting srv2"
+    	docker kill --signal=SIGINT srv3
+    	docker wait srv1
+    	docker run --name srv3 --rm -d --cpuset-cpus=2 vladikstuk/vladikdonk
+    fi   
 else
-    echo "srv1 is already running."
+    echo "Image is up to date"
 fi
+}
+
+date
+update
 
 srv1_timer=0
 srv2_timer=0
 srv3_idle_timer=0
 srv2_idle_timer=0
 
+update_timer=0
+last_update=$(date +%s)
+
 while true; do
+    # Check for updates
+    current_time=$(date +%s)
+    update_timer=$((current_time - last_update))
+    if [ $update_timer -ge 20 ]; then
+        update
+        last_update=$current_time
+    fi
     # Check if srv1 is running
-     if docker ps --format '{{.Names}}' | grep -wq srv1; then
+    if docker ps --format '{{.Names}}' | grep -wq srv1; then
         cpu_usage_srv1=$(docker stats --no-stream --format "{{.CPUPerc}}" srv1 | tr -d '%')
         
         if (( $(echo "$cpu_usage_srv1 > 90" | bc -l) )); then
